@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Personal Budget</title>
+</head>
+<body>
+    <h1>Personal Budget</h1>
+    <nav>
+        <a href="./index.html">Home</a>
+        <a href="./add-new-convert">Add a new Convert</a>
+        <a href="./edit-convert">Edit a Convert</a>
+        <a href="./delete-convert">Delete a Convert</a>
+    </nav>
+    <h2>Get Converts</h2>
+    <div class="request-buttons">
+        <div class="">
+            <button class="fetch-converts">Fetch all Converts</button>
+            <button class="fetch-by-id">Fetch by ID</button>
+            <button class="fetch-by-name">Fetch by Name</button>
+        </div>
+        <div class="second">
+            <input type="text" id="search" value=""> 
+        </div>
+    </div>
+    <div class="convert-container">
+        <div class="convert">
+            <h3 class="convert-header">Convert</h3>
+            <div class="convert-description">
+                <p class="convert-text">Описание</p>
+                <p class="convert-amount">50 EUR</p>
+                <button id="edit-convert" class="edit-btn">
+                    <i class="fas fa-pen"></i>
+                </button>
+                <button id="delete-convert" class="delete-btn">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="/js/main.js"></script>
+</body>
+</html>
