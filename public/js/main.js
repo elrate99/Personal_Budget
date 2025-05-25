@@ -7,12 +7,108 @@ const resetConverts = () => {
     container.innerHTML = '';
 }
 
-document.querySelectorAll('.convert').forEach((convertBlock) => {
-    const header = convertBlock.querySelector('.convert-header');
-    const description = convertBlock.querySelector('.convert-description');
+const renderError = response => {
+    container.innerHTML = `<p>Your request returned an error from the server:</p>
+    <p>Code: ${response.status}</p>
+    <p>${response.statusText}</p>`
+}
+
+  const renderConverts = (converts = []) => {
+    resetConverts();
+    if (converts.length > 0) {
+        converts.forEach(convert => {
+            const newConvert = document.createElement('div');
+            newConvert.className = 'convert';
+            newConvert.innerHTML = `<h3 class="convert-header">${convert.header}</h3>
+            <div class="convert-description">
+                <p class="convert-text">ID: ${convert.id}</p>
+                <p class="convert-text">Description: ${convert.convert}</p>
+                <p class="convert-amount">Price: ${convert.amount} EUR</p>
+                <div class="buttons">
+                <button class="edit-btn">
+                    <i class="fas fa-pen"></i>
+                </button>
+                <button class="delete-btn" data-id="${convert.id}">
+                    <i class="fas fa-times"></i>
+                </button>
+                </div>
+            </div>`
+
+            const header = newConvert.querySelector('.convert-header');
+            const description = newConvert.querySelector('.convert-description');
+            const editBtn = newConvert.querySelector('.edit-btn');
+            const deleteBtn = newConvert.querySelector('.delete-btn');
+
+            header.addEventListener('click', () => {
+                description.classList.toggle('show');
+            })
+
+            deleteBtn.addEventListener('click', () => {
+                const id = deleteBtn.getAttribute('data-id');
+                fetch(`/api/envelopes/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(response => {
+                    if (response.ok) {
+                        return response.json()
+                    } else {
+                        renderError(response);
+                    }
+                })
+                .then(() => {
+                    newConvert.remove();
+                })
+            })
+
+            container.appendChild(newConvert);
+        });
+    } else {
+        container.innerHTML = '<p>Your request returned no converts</p>';
+    }
+  }
   
-    header.addEventListener('click', () => {
-      description.classList.toggle('show');
-    });
+  fetchAllConverts.addEventListener('click', () => {
+    fetch('/api/envelopes')
+    .then(response => {
+        if(response.ok) {
+            return response.json();
+        } else {
+            renderError(response);
+        }
+    })
+    .then(response => {
+        renderConverts(response)
+    })
   });
+
+  fetchById.addEventListener('click', () => {
+    const id = document.getElementById('search').value;
+    fetch(`/api/envelopes/id/${id}`)
+    .then(response => {
+        if(response.ok) {
+            return response.json();
+        } else {
+            renderError(response);
+        }
+    })
+    .then(response => {
+        renderConverts(response);
+    })
+  })
+
+  fetchByName.addEventListener('click', () => {
+    const name = document.getElementById('search').value;
+    fetch(`/api/envelopes/name/${name}`)
+    .then(response => {
+        if(response.ok) {
+            return response.json();
+        } else {
+            renderError(response);
+        }
+    })
+    .then(response => {
+        renderConverts(response);
+    })
+  })
+
   

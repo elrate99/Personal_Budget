@@ -13,6 +13,20 @@ button {
     padding: 8px;
 }
 
+.buttons {
+    text-align: right;
+}
+
+.inputs {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    margin: 5px;
+    text-align: left;
+}
+
+
 button:hover {
     background-color: #c19a6b;
 }
@@ -32,7 +46,6 @@ a:hover {
 }
 
 input {
-    margin-top: 20px;
     padding: 5px;
 }
 
@@ -40,6 +53,8 @@ input {
     margin-top: 20px;
     display: flex;
     justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
 }
 
 .convert {
@@ -50,6 +65,13 @@ input {
     padding-left: 50px;
     padding-right: 50px;
     text-align: left;
+    margin: 10px;
+    flex: 0 0 calc(15% - 20px); /* 5 элементов в строке с учётом отступов */
+    max-width: calc(20% - 20px);
+}
+
+.convert-header {
+    text-align: center;
 }
 
 .convert-header:hover {
@@ -59,10 +81,10 @@ input {
 }
 
 .convert-description {
-    overflow: hidden;
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.7s ease, opacity 0.7s ease;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.5s ease;
 }
 
 .convert-description.show {
@@ -98,3 +120,6 @@ input {
     background-color: #fff;
   }
   
+  #submit-btn {
+    margin-top: 20px;
+  }

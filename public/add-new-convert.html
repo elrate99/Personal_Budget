@@ -13,19 +13,18 @@
         <a href="./index.html">Home</a>
         <a href="./add-new-convert.html">Add a new Convert</a>
     </nav>
-    <h2>Get Converts</h2>
-    <div class="request-buttons">
-        <div>
-            <button id="fetch-converts">Fetch all Converts</button>
-            <button id="fetch-by-id">Fetch by ID</button>
-            <button id="fetch-by-name">Fetch by Name</button>
-        </div>
-        <div class="second">
-            <input type="text" id="search" value=""> 
-        </div>
+    <h2>Add a new Convert</h2>
+    <div class="inputs">
+        <label for="name">Convert Name:</label>
+        <input type="text" id="name" value="">
+        <label for="description">Convert Description:</label>
+        <textarea id="description"></textarea>
+        <label for="amount">Convert Name:</label>
+        <input type="number" id="amount" value="">
+        <button id="submit-btn">Submit</button>
     </div>
-    <div class="convert-container">   
-    </div>
-    <script src="/js/main.js"></script>
+    <div class="convert-container">
+    </div>   
+    <script src="/js/add-new-convert.js"></script>
 </body>
 </html>
