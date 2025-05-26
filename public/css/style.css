@@ -106,7 +106,11 @@ input {
     background-color: #fff;
   }
 
-  .edit-btn {
+  .edit-btn,
+  .withdraw-btn,
+  .transfer-btn,
+  .save-btn,
+  .deposit-btn {
     background: none;
     border: none;
     color: #333;
@@ -115,11 +119,55 @@ input {
     padding: 5px;
   }
   
-  .edit-btn:hover {
+  .edit-btn:hover,
+  .withdraw-btn:hover,
+  .transfer-btn:hover,
+  .save-btn:hover,
+  .deposit-btn:hover {
     color: #c19a6b;
     background-color: #fff;
   }
   
   #submit-btn {
     margin-top: 20px;
+  }
+
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5); /* затемнение */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    width: 300px;
+    text-align: center;
+    z-index: 1001; /* выше overlay */
+  }
+  
+  .close-popup {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  
+  .apply-button {
+    margin-top: 10px;
+  }
+
+  #search {
+    margin-top: 10px;
   }

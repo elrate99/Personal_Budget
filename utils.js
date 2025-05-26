@@ -1,4 +1,4 @@
-const converts = require('./data')
+const {converts} = require('./data')
 
 const findById = (id) => {
     const result = converts.find(convert => convert.id === Number(id));

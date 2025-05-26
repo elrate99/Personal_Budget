@@ -14,11 +14,15 @@
         <a href="./add-new-convert.html">Add a new Convert</a>
     </nav>
     <h2>Get Converts</h2>
+    <div class="budget-container">
+        <h3 class="budget-text">Total Budget: 0 EUR</h3>
+    </div>
     <div class="request-buttons">
         <div>
             <button id="fetch-converts">Fetch all Converts</button>
             <button id="fetch-by-id">Fetch by ID</button>
             <button id="fetch-by-name">Fetch by Name</button>
+            <button id="openPopup">Set Budget</button>
         </div>
         <div class="second">
             <input type="text" id="search" value=""> 
@@ -26,6 +30,6 @@
     </div>
     <div class="convert-container">   
     </div>
-    <script src="/js/main.js"></script>
+    <script type="module" src="/js/main.js"></script>
 </body>
 </html>
