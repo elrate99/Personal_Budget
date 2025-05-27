@@ -93,7 +93,7 @@ container.addEventListener('click', event => {
     const transferBtn = event.target.closest('.transfer-btn');
 
     if (editBtn) {
-        if (isEditing) return; // Запретить редактирование, если уже редактируем
+        if (isEditing) return;
         isEditing = true;
 
         const convertDiv = editBtn.closest('.convert');
@@ -164,7 +164,7 @@ container.addEventListener('click', event => {
     }
 
     if (deleteBtn) {
-        if (isEditing) return; // не даем удалить во время редактирования
+        if (isEditing) return;
         const id = deleteBtn.getAttribute('data-id');
         const convertDiv = deleteBtn.closest('.convert');
 

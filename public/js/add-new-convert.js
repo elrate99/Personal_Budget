@@ -10,7 +10,10 @@ submitBtn.addEventListener('click', () => {
     .then(response => response.json())
     .then(() => {
         const queryResult = document.createElement('p');
-        queryResult.innerHTML = 'Good! Your convert was added!';
+        queryResult.innerHTML = 'Good! Your convert was added! Redirecting...';
         container.appendChild(queryResult);
+        setTimeout(() => {
+            window.location.href = 'index.html';
+          }, 3000);
     })
 })
