@@ -58,20 +58,52 @@ input {
 }
 
 .convert {
-    background-color: #fff;
-    border-radius: 10px;
-    border: 2px solid black;
-    padding-bottom: 10px;
-    padding-left: 50px;
-    padding-right: 50px;
-    text-align: left;
-    margin: 10px;
-    flex: 0 0 calc(15% - 20px); /* 5 элементов в строке с учётом отступов */
-    max-width: calc(20% - 20px);
+    background: #fff9f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 15px;
+    flex: 0 0 calc(25% - 30px); /* 4 колонки */
+    transition: transform 0.3s ease;
+    position: relative;
+    min-width: 250px;
+}
+
+.convert:hover {
+    transform: translateY(-5px);
+}
+
+convert-text {
+    margin: 8px 0;
+    font-size: 0.95rem;
+    color: #5B4636;
+}
+
+.convert-amount {
+    font-weight: bold;
+    color: #8B4513;
+    font-size: 1.2rem;
+    margin: 15px 0;
+}
+
+/* Buttons grid */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 15px;
+}
+
+button i {
+    pointer-events: none; /* Чтобы клик срабатывал на кнопке, а не иконке */
 }
 
 .convert-header {
-    text-align: center;
+    font-size: 1.4rem;
+    color: #6b4226;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #d2b48c;
 }
 
 .convert-header:hover {
@@ -145,16 +177,7 @@ input {
     z-index: 1000;
   }
   
-  .popup-content {
-    background-color: white;
-    padding: 20px;
-    border-radius: 10px;
-    position: relative;
-    width: 300px;
-    text-align: center;
-    z-index: 1001; /* выше overlay */
-  }
-  
+
   .close-popup {
     position: absolute;
     top: 10px;
@@ -163,11 +186,135 @@ input {
     cursor: pointer;
   }
   
-  
-  .apply-button {
-    margin-top: 10px;
-  }
+  .popup-content {
+    background: linear-gradient(145deg, #fff9f0, #ffffff);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Учитываем padding в общей ширине */
+    width: 400px;
+    max-width: 90vw;
+    padding: 25px;
+}
+
+.popup-content label {
+    display: block;
+    margin-left: 10px;
+    text-align: left;
+    font-weight: 600;
+    color: #6b4226;
+}
+
+.popup-content input {
+    padding: 10px;
+    border: 2px solid #d2b48c;
+    border-radius: 8px;
+    width: calc(100% - 20px); /* Учитываем padding */
+    margin: 0 10px 15px 10px; /* Симметричные отступы */
+}
+
+.apply-button {
+    background: #8B4513;
+    color: white !important;
+    padding: 12px 24px;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.apply-button:hover {
+    background: #6b4226;
+    transform: scale(1.05);
+}  
 
   #search {
     margin-top: 10px;
   }
+
+  .form-group {
+    margin-bottom: 20px;
+}
+
+.submit-button {
+    background: #8B4513;
+    color: white;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 25px auto;
+}
+
+.budget-text {
+    font-size: 1.4rem;
+    color: #6b4226;
+    padding: 15px;
+    background: #fff9f0;
+    border-radius: 10px;
+    display: inline-block;
+    margin: 20px 0;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.budget-text::before {
+    content: "💰";
+    margin-right: 10px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+    border: 2px solid #d2b48c;
+    border-radius: 8px;
+    padding: 12px;
+}
+
+  /* Анимация появления конвертов */
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.convert {
+    animation: slideIn 0.5s ease forwards;
+}
+
+/* Анимация кнопок */
+button {
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    filter: brightness(1.1);
+}
+
+@media (max-width: 768px) {
+    .convert {
+        flex: 0 0 calc(50% - 20px);
+    }
+    
+    .buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 480px) {
+    .convert {
+        flex: 0 0 100%;
+        margin: 10px 0;
+    }
+    
+    .popup-content {
+        padding: 15px;
+    }
+    .popup-content input {
+        margin: 0 5px 10px 5px;
+        width: calc(100% - 10px);
+    }
+}

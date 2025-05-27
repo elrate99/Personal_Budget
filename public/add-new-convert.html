@@ -15,13 +15,27 @@
     </nav>
     <h2>Add a new Convert</h2>
     <div class="inputs">
-        <label for="name">Convert Name:</label>
-        <input type="text" id="name" value="">
-        <label for="description">Convert Description:</label>
-        <textarea id="description"></textarea>
-        <label for="amount">Convert Name:</label>
-        <input type="number" id="amount" value="">
-        <button id="submit-btn">Submit</button>
+        <div class="form-group">
+            <label for="name">
+                <i class="fas fa-tag"></i> Convert Name:
+            </label>
+            <input type="text" id="name" placeholder="Enter convert name...">
+        </div>
+        
+        <div class="form-group">
+            <label for="description">
+                <i class="fas fa-align-left"></i> Description:
+            </label>
+            <textarea 
+                id="description" 
+                rows="4"
+                placeholder="Add detailed description..."
+            ></textarea>
+        </div>
+        
+        <button id="submit-btn" class="submit-button">
+            <i class="fas fa-plus-circle"></i> Create Convert
+        </button>
     </div>
     <div class="convert-container">
     </div>   

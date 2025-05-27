@@ -30,10 +30,11 @@ envelopesRouter.get('/name/:name', (req, res, next) => {
 
 envelopesRouter.post('/', (req, res, next) => {
     const request = req.query;
+    request.amount = 0;
     request.id = idCounter++;
-    if (request.header && request.convert && request.amount) {
+    if (request.header && request.convert) {
         converts.push(request);
-        res.status(201).send();
+        res.status(201).send(request);
     } else {
         res.status(400).send();
     }
@@ -117,6 +118,9 @@ envelopesRouter.put('/:id', (req, res, next) => {
         }
 
         if (action === 'deposit') {
+            if(budget.budget < numericAmount) {
+                return res.status(400).send({ message: `Not enough budget. Available: ${budget.budget} EUR.`})
+            }
             foundedConvert.amount = (currentAmount + numericAmount).toString();
             budget.budget -= numericAmount;
         } else if (action === 'withdraw') {

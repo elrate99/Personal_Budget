@@ -175,7 +175,6 @@ container.addEventListener('click', event => {
             })
             .then(() => {
                 convertDiv.remove();
-                location.reload();
             })
             .catch(err => {
                 if (err.status) {
@@ -189,6 +188,7 @@ container.addEventListener('click', event => {
     }
 
     if (depositBtn) {
+        if (isEditing) return;
         const convertDiv = depositBtn.closest('.convert');
         const id = depositBtn.getAttribute('data-id');
         const header = convertDiv.querySelector('.convert-header').textContent;
@@ -209,13 +209,11 @@ container.addEventListener('click', event => {
                         })
                         .then(response => {
                             if(response.ok) {
+                                location.reload();
                                 return response.json();
                             } else {
                                 response.json().then(err => alert(err.message));
                             }
-                        })
-                        .then(() => {
-                            location.reload();
                         })
                         .catch(err => console.error(err));
                     }
@@ -225,6 +223,7 @@ container.addEventListener('click', event => {
     }
 
     if (withdrawBtn) {
+        if (isEditing) return;
         const convertDiv = withdrawBtn.closest('.convert');
         const id = withdrawBtn.getAttribute('data-id');
         const header = convertDiv.querySelector('.convert-header').textContent;
@@ -262,6 +261,7 @@ container.addEventListener('click', event => {
     }
 
     if (transferBtn) {
+        if (isEditing) return;
         const convertDiv = transferBtn.closest('.convert');
         const fromId = transferBtn.getAttribute('data-id');
         const header = convertDiv.querySelector('.convert-header').textContent;
